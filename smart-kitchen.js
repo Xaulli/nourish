@@ -1,0 +1,14 @@
+(()=>{'use strict';
+const KEY='nourish_v5';
+const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}};
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dayDiff=d=>Math.ceil((new Date(d)-new Date(new Date().toDateString()))/86400000);
+const grams=q=>{const m=String(q||'').match(/([0-9]+(?:\.[0-9]+)?)\s*(kg|g)\b/i);return m?+m[1]*(m[2].toLowerCase()==='kg'?1000:1):null};
+function refresh(){const s=load(),foods=Array.isArray(s.foods)?s.foods:[],inv=Array.isArray(s.inventory)?s.inventory:[],meals=Array.isArray(s.meals)?s.meals:[];const foodByName=new Map(foods.map(f=>[String(f.name).toLowerCase(),f]));
+ const ranked=meals.map((m,i)=>{let available=0,total=m.ingredients?.length||0,urgent=0,partial=0;for(const ing of m.ingredients||[]){const f=foods[ing.foodIndex];if(!f)continue;const it=inv.find(x=>String(x.name).toLowerCase()===String(f.name).toLowerCase());if(!it)continue;const have=grams(it.qty),need=(+ing.grams||0)/Math.max(1,+m.portions||1);if(have==null){available++;}else if(have>=need){available++;}else if(have>0){partial++;}if(dayDiff(it.date)<=3)urgent++;}
+ const score=available*100+partial*25+urgent*40;return{m,i,available,total,partial,urgent,score};}).filter(x=>x.available+x.partial>0).sort((a,b)=>b.score-a.score||b.available-a.available||b.urgent-a.urgent).slice(0,4);
+ const el=document.getElementById('ideasList');if(el){const html=ranked.length?ranked.map((r,n)=>{const suffix=r.partial?` · ${r.partial} partial`:'';const expiry=r.urgent?` · 🔥 ${r.urgent} expiring soon`:'';return `<div class="idea"><div class="row"><div class="row"><span class="rank">${n+1}</span><div><b>${esc(r.m.name)}</b><div class="sub">${r.available}/${r.total} ingredients ready${suffix}${expiry}</div></div></div><button class="btn small" data-log-meal="${r.i}">＋</button></div></div>`}).join(''):'<div class="item sub">Add ingredients to Kitchen to get personalised meal ideas.</div>';if(el.innerHTML!==html)el.innerHTML=html}
+ const soonEl=document.getElementById('kitchenSoon');if(soonEl){const soon=inv.filter(x=>dayDiff(x.date)<=3).sort((a,b)=>dayDiff(a.date)-dayDiff(b.date)).slice(0,4);const html=soon.length?soon.map(x=>{const d=dayDiff(x.date),label=d<0?'Expired':d===0?'Today':d===1?'Tomorrow':'in '+d+' days',cls=d<=0?'expiry':'soon';return `<div class="item row"><div><b>📦 ${esc(x.name)}</b><div class="sub">${esc(x.qty)}</div></div><span class="${cls}">${label}</span></div>`}).join(''):'<div class="item sub">Nothing needs using urgently 🎉</div>';if(soonEl.innerHTML!==html)soonEl.innerHTML=html}
+}
+let last='';setInterval(()=>{const s=localStorage.getItem(KEY)||'';if(s!==last){last=s;refresh()}},700);setTimeout(()=>{last=localStorage.getItem(KEY)||'';refresh()},250);window.addEventListener('storage',refresh);
+})();
