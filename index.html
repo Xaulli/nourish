@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ed">
+<title>nourish — Eat well. Waste less.</title>
+<style>
+:root{--bg:#f7f4ed;--card:#fffdf8;--ink:#17372c;--muted:#718078;--green:#267653;--green2:#dcefe4;--line:#e7e3d9;--red:#e56e61;--amber:#e7a84a;--blue:#54a9d8;--shadow:0 8px 28px rgba(29,57,46,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+.app{max-width:480px;margin:auto;min-height:100vh;padding-bottom:84px}.screen{display:none;padding:20px}.screen.active{display:block}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}h1{font-size:27px;margin:0;letter-spacing:-.7px}h2{font-size:21px;margin:0 0 14px}h3{font-size:16px;margin:0 0 7px}.sub{color:var(--muted);font-size:12px}.logo{font-weight:800;font-size:28px;letter-spacing:-1.5px}.logo span{display:block;font-size:11px;font-weight:600;letter-spacing:0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0;box-shadow:var(--shadow)}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:750;cursor:pointer;background:var(--green);color:white}.btn.full{width:100%}.btn.secondary{background:transparent;color:var(--green);border:1px solid #9fc7b0}.btn.small{padding:8px 11px;font-size:12px}.btn.danger{background:#fff0ec;color:#bd5147}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.calorie{display:flex;gap:18px;align-items:center}.ring{width:124px;height:124px;border-radius:50%;background:conic-gradient(var(--green) 0 66%,#dfe9e2 66%);display:grid;place-items:center;flex:none}.ringin{width:98px;height:98px;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center}.big{font-size:25px;font-weight:800}.kcal{font-size:11px;color:var(--muted)}
+.bar{height:7px;background:#eeeae1;border-radius:10px;overflow:hidden;margin:5px 0 9px}.fill{height:100%;border-radius:10px}.protein{background:#54a878}.carbs{background:#e8ad45}.fat{background:#e97878}
+.waterbar{height:9px;background:#e7edf0;border-radius:10px;overflow:hidden}.waterfill{height:100%;background:var(--blue)}
+.mealrow{padding:12px 0;border-bottom:1px solid var(--line)}.mealrow:last-child{border:0}.mealname{font-weight:700}.mealmeta{font-size:12px;color:var(--muted);margin-top:3px}.alert{background:#fff1ec;border-color:#f5d0c7}.expiry{color:#cf594e;font-weight:750;font-size:12px}
+.emoji{font-size:25px;width:40px;text-align:center}.chips{display:flex;gap:7px;overflow:auto;padding-bottom:4px}.chip{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:white;font-size:12px}.chip.active{background:var(--green);color:white;border-color:var(--green)}
+input,select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:white;font:inherit;color:var(--ink);margin:6px 0 10px}label{font-size:12px;font-weight:700;color:var(--muted)}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);background:rgba(255,253,248,.97);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 4px calc(9px + env(safe-area-inset-bottom));z-index:5}nav button{background:none;border:0;color:var(--muted);font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}nav button.active{color:var(--green);font-weight:800}nav .icon{font-size:18px}
+.modal{position:fixed;inset:0;background:#17372c55;display:none;align-items:flex-end;justify-content:center;z-index:20}.modal.open{display:flex}.sheet{width:min(480px,100%);background:var(--card);border-radius:25px 25px 0 0;padding:20px 20px calc(25px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto}.close{background:none;border:0;font-size:24px;color:var(--muted)}
+.scanner{background:#101914;color:white;min-height:280px;border-radius:20px;display:grid;place-items:center;position:relative;overflow:hidden}.scanbox{width:75%;height:100px;border:3px solid #66c98d;border-radius:14px}.scanmsg{position:absolute;bottom:14px;background:#0009;padding:8px 12px;border-radius:10px;font-size:12px}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--ink);color:white;padding:11px 15px;border-radius:12px;font-size:13px;display:none;z-index:30}
+.product{display:flex;gap:12px;align-items:center}.product img{width:58px;height:58px;object-fit:contain;border-radius:12px;background:#f1eee7}.muted{color:var(--muted)}
+@media(min-width:700px){body{padding:24px}.app{box-shadow:0 0 0 1px var(--line),0 20px 60px #00000010;border-radius:28px;overflow:hidden}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="today" class="screen active">
+<header><div class="logo">nourish<span>Eat well. Waste less.</span></div><div>👤</div></header>
+<div class="card calorie"><div class="ring"><div class="ringin"><div><div class="big" id="kcalToday">0</div><div class="kcal">/ 1,900 kcal</div></div></div></div><div style="flex:1">
+<div class="row"><b>Protein</b><span class="sub" id="proteinToday">0 / 130g</span></div><div class="bar"><div id="proteinBar" class="fill protein" style="width:0"></div></div>
+<div class="row"><b>Carbs</b><span class="sub">0 / 200g</span></div><div class="bar"><div class="fill carbs" style="width:0"></div></div>
+<div class="row"><b>Fat</b><span class="sub">0 / 65g</span></div><div class="bar"><div class="fill fat" style="width:0"></div></div>
+</div></div>
+<div class="card"><div class="row"><b>💧 Water</b><span id="waterText">0 / 2.0L</span></div><div class="waterbar" style="margin:12px 0"><div id="waterBar" class="waterfill" style="width:0"></div></div><div class="grid"><button class="btn small" onclick="addWater(250)">+250ml</button><button class="btn small" onclick="addWater(500)">+500ml</button></div></div>
+<div class="card"><div class="row"><h3>Today's meals</h3><button class="btn small" onclick="openFood()">+ Add</button></div><div id="todayMeals"></div></div>
+<div class="card alert"><div class="row"><div><h3>🔥 Use soon</h3><div class="sub" id="expirySummary"></div></div><button class="btn small" onclick="show('ideas')">Ideas →</button></div><div id="expiryList"></div></div>
+</section>
+
+<section id="food" class="screen">
+<header><h1>Food</h1><button class="btn small" onclick="openScanner()">📷 Scan</button></header>
+<input id="foodSearch" placeholder="🔍 Search foods..." oninput="renderFoodList()">
+<div class="grid"><button class="btn secondary" onclick="openScanner()">📷 Scan barcode</button><button class="btn secondary" onclick="openModal('foodModal')">＋ Create food</button></div>
+<div class="card"><div class="row"><h3>Recent & saved</h3><span class="sub">UK-focused</span></div><div id="foodList"></div></div>
+</section>
+
+<section id="meals" class="screen">
+<header><h1>Meals</h1><button class="btn small" onclick="openModal('mealModal')">＋</button></header>
+<div id="mealList"></div><div class="card" style="background:var(--green2)"><h3>Create your own meal</h3><div class="sub">Add ingredients, set portions and Nourish calculates the nutrition.</div><button class="btn full" style="margin-top:12px" onclick="openModal('mealModal')">＋ Create meal</button></div>
+</section>
+
+<section id="kitchen" class="screen">
+<header><h1>Kitchen</h1><button class="btn small" onclick="openModal('inventoryModal')">＋</button></header>
+<div class="card alert"><div class="row"><h3>🔥 Use soon</h3><span class="sub">Expiry priority</span></div><div id="kitchenSoon"></div></div>
+<div class="card"><h3>All inventory</h3><div id="kitchenAll"></div></div>
+</section>
+
+<section id="ideas" class="screen">
+<header><h1>What can I make?</h1></header>
+<div class="chips"><span class="chip active">Use soon</span><span class="chip">Under 600 kcal</span><span class="chip">High protein</span><span class="chip">Quick</span></div>
+<div class="card"><h3>🔥 Use these first</h3><div id="ideasList"></div></div>
+</section>
+
+<section id="restaurant" class="screen">
+<header><h1>Restaurant / Takeaway</h1></header><input placeholder="🔍 Search restaurant...">
+<div class="card"><div class="mealrow"><div class="row"><div><b>🍔 Big Mac</b><div class="mealmeta">McDonald's · 493 kcal</div></div><button class="btn small" onclick="addLoggedFood({name:'Big Mac',kcal:493,protein:26,carbs:42,fat:25})">＋</button></div></div>
+<div class="mealrow"><div class="row"><div><b>🍗 McChicken</b><div class="mealmeta">McDonald's · 400 kcal</div></div><button class="btn small" onclick="addLoggedFood({name:'McChicken',kcal:400,protein:22,carbs:43,fat:16})">＋</button></div></div>
+<div class="mealrow"><div class="row"><div><b>🍟 Fries</b><div class="mealmeta">McDonald's · 237 kcal</div></div><button class="btn small" onclick="addLoggedFood({name:'Fries',kcal:237,protein:3,carbs:30,fat:11})">＋</button></div></div></div>
+</section>
+</div>
+
+<nav><button data-screen="today" class="active" onclick="show('today')"><span class="icon">⌂</span>Today</button><button data-screen="food" onclick="show('food')"><span class="icon">🍎</span>Food</button><button data-screen="meals" onclick="show('meals')"><span class="icon">♡</span>Meals</button><button data-screen="kitchen" onclick="show('kitchen')"><span class="icon">♧</span>Kitchen</button><button data-screen="ideas" onclick="show('ideas')"><span class="icon">☰</span>More</button></nav>
+<div id="toast" class="toast"></div>
+
+<div id="inventoryModal" class="modal"><div class="sheet"><div class="row"><h2>Add to Kitchen</h2><button class="close" onclick="closeModals()">×</button></div><label>Food</label><input id="invName" placeholder="e.g. Chicken breast"><label>Quantity</label><input id="invQty" placeholder="e.g. 600g"><label>Use-by date</label><input id="invDate" type="date"><button class="btn full" onclick="saveInventory()">Add to Kitchen</button></div></div>
+
+<div id="foodModal" class="modal"><div class="sheet"><div class="row"><h2>Create food</h2><button class="close" onclick="closeModals()">×</button></div><label>Food name</label><input id="newFoodName" placeholder="Food name"><label>Calories per 100g</label><input id="newFoodKcal" type="number" placeholder="e.g. 150"><label>Protein per 100g</label><input id="newFoodProtein" type="number" placeholder="e.g. 20"><label>Carbs per 100g</label><input id="newFoodCarbs" type="number" placeholder="e.g. 5"><label>Fat per 100g</label><input id="newFoodFat" type="number" placeholder="e.g. 3"><button class="btn full" onclick="saveFood()">Save food</button></div></div>
+
+<div id="mealModal" class="modal"><div class="sheet"><div class="row"><h2>Create meal</h2><button class="close" onclick="closeModals()">×</button></div><label>Meal name</label><input id="mealName" placeholder="e.g. Honey chilli chicken"><label>Total calories</label><input id="mealKcal" type="number" placeholder="e.g. 2000"><label>Total protein (g)</label><input id="mealProtein" type="number" placeholder="e.g. 160"><label>Number of portions</label><input id="mealPortions" type="number" value="4"><button class="btn full" onclick="saveMeal()">Save meal</button></div></div>
+
+<div id="scannerModal" class="modal"><div class="sheet"><div class="row"><h2>Scan barcode</h2><button class="close" onclick="closeModals()">×</button></div><div class="scanner"><video id="video" autoplay playsinline style="width:100%;height:280px;object-fit:cover;display:none"></video><div class="scanbox"></div><div class="scanmsg" id="scanMsg">Point your camera at a barcode</div></div><input id="manualBarcode" inputmode="numeric" placeholder="Or enter barcode manually"><button class="btn full" onclick="lookupBarcode(document.getElementById('manualBarcode').value)">Look up product</button><p class="sub" style="margin-top:12px">Nourish uses Open Food Facts for the prototype's barcode lookup. Product coverage can vary, so every result remains editable.</p></div></div>
+
+<script>
+const KEY='nourish_v1';
+const initial={
+ foods:[
+  {name:'Lindahls Pro+ Lemon Cheesecake',kcal:150,protein:20,carbs:10,fat:3,unit:'pot'},
+  {name:'Chicken breast',kcal:165,protein:31,carbs:0,fat:3.6,unit:'100g'},
+  {name:'Veetee Sticky Rice',kcal:152,protein:3,carbs:33.1,fat:.8,unit:'100g'},
+  {name:'Strawberries',kcal:32,protein:.7,carbs:7.7,fat:.3,unit:'100g'}
+ ],
+ meals:[
+  {name:'Honey Chilli Chicken',kcal:518,protein:42,portions:1,emoji:'🍗'},
+  {name:'Spicy Tomato Chicken Rigatoni',kcal:462,protein:36,portions:1,emoji:'🍝'},
+  {name:'Chicken & Roast Potatoes',kcal:574,protein:38,portions:1,emoji:'🥔'}
+ ],
+ inventory:[
+  {name:'Strawberries',qty:'250g',date:datePlus(1)},
+  {name:'Chicken breast',qty:'600g',date:datePlus(2)},
+  {name:'Baby potatoes',qty:'1kg',date:datePlus(3)},
+  {name:'Milk',qty:'1L',date:datePlus(12)},
+  {name:'Eggs',qty:'10',date:datePlus(18)}
+ ],
+ logs:[],water:0
+};
+function datePlus(n){let d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+let state=load();
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||structuredClone(initial)}catch(e){return structuredClone(initial)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function todayLogs(){return state.logs.filter(x=>x.date===new Date().toISOString().slice(0,10))}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));window.scrollTo(0,0);render()}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.style.display='block';clearTimeout(window.tt);window.tt=setTimeout(()=>x.style.display='none',1900)}
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModals(){document.querySelectorAll('.modal').forEach(x=>x.classList.remove('open'));stopCamera()}
+function openFood(){show('food')}
+function addWater(n){state.water+=n;save();toast(`Added ${n}ml 💧`);renderToday()}
+function addLoggedFood(f){state.logs.push({...f,date:new Date().toISOString().slice(0,10)});save();toast(`Added ${f.name} ✓`);renderToday()}
+function saveFood(){let f={name:v('newFoodName'),kcal:+v('newFoodKcal')||0,protein:+v('newFoodProtein')||0,carbs:+v('newFoodCarbs')||0,fat:+v('newFoodFat')||0,unit:'100g'};if(!f.name)return toast('Give the food a name');state.foods.unshift(f);save();closeModals();toast('Food saved ✓');render()}
+function saveMeal(){let portions=Math.max(1,+v('mealPortions')||1),m={name:v('mealName'),kcal:(+v('mealKcal')||0)/portions,protein:(+v('mealProtein')||0)/portions,portions,emoji:'🍽️'};if(!m.name)return toast('Give the meal a name');state.meals.unshift(m);save();closeModals();toast('Meal saved ✓');render()}
+function saveInventory(){let x={name:v('invName'),qty:v('invQty'),date:v('invDate')};if(!x.name||!x.date)return toast('Add a food and use-by date');state.inventory.push(x);save();closeModals();toast('Added to Kitchen ✓');render()}
+function v(id){return document.getElementById(id).value.trim()}
+function daysUntil(date){return Math.ceil((new Date(date)-new Date(new Date().toDateString()))/86400000)}
+function invHTML(x){let d=daysUntil(x.date),label=d<0?'Expired':d===0?'Today':d===1?'Tomorrow':`in ${d} days`;return `<div class="mealrow"><div class="row"><div><b>📦 ${esc(x.name)}</b><div class="mealmeta">${esc(x.qty)}</div></div><span class="${d<=3?'expiry':'muted'}">${label}</span></div></div>`}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){renderToday();renderFoodList();renderMeals();renderKitchen();renderIdeas()}
+function renderToday(){let logs=todayLogs(),k=logs.reduce((a,x)=>a+(+x.kcal||0),0),p=logs.reduce((a,x)=>a+(+x.protein||0),0);document.getElementById('kcalToday').textContent=Math.round(k).toLocaleString();document.getElementById('proteinToday').textContent=`${Math.round(p)} / 130g`;document.getElementById('proteinBar').style.width=Math.min(100,p/130*100)+'%';document.getElementById('waterText').textContent=`${(state.water/1000).toFixed(1)} / 2.0L`;document.getElementById('waterBar').style.width=Math.min(100,state.water/20)+'%';document.getElementById('todayMeals').innerHTML=logs.length?logs.map(x=>`<div class="mealrow"><div class="row"><div><b>🍽️ ${esc(x.name)}</b><div class="mealmeta">${Math.round(x.protein||0)}g protein</div></div><b>${Math.round(x.kcal)} kcal</b></div></div>`).join(''):'<div class="mealrow muted">Nothing logged yet — add your first food.</div>';let soon=state.inventory.map(x=>({...x,d:daysUntil(x.date)})).filter(x=>x.d<=3).sort((a,b)=>a.d-b.d);document.getElementById('expirySummary').textContent=soon.length?`${soon.length} item${soon.length>1?'s':''} need attention`:'Nothing urgent 🎉';document.getElementById('expiryList').innerHTML=soon.slice(0,3).map(invHTML).join('')}
+function renderFoodList(){let q=(document.getElementById('foodSearch')?.value||'').toLowerCase();let a=state.foods.filter(x=>x.name.toLowerCase().includes(q));document.getElementById('foodList').innerHTML=a.length?a.map(x=>`<div class="mealrow"><div class="row"><div><b>🍎 ${esc(x.name)}</b><div class="mealmeta">${x.kcal} kcal / ${x.unit}</div></div><button class="btn small" onclick='addLoggedFood(${JSON.stringify(x)})'>＋</button></div></div>`).join(''):'<div class="mealrow muted">No saved foods found.</div>'}
+function renderMeals(){document.getElementById('mealList').innerHTML=state.meals.map(x=>`<div class="card"><div class="row"><div><h3>${x.emoji||'🍽️'} ${esc(x.name)}</h3><div class="sub">${Math.round(x.kcal)} kcal · ${Math.round(x.protein)}g protein / portion</div></div><button class="btn small" onclick='addLoggedFood(${JSON.stringify(x)})'>＋</button></div></div>`).join('')}
+function renderKitchen(){let sorted=[...state.inventory].sort((a,b)=>daysUntil(a.date)-daysUntil(b.date));document.getElementById('kitchenSoon').innerHTML=sorted.filter(x=>daysUntil(x.date)<=3).map(invHTML).join('')||'<div class="mealrow muted">Nothing needs using urgently.</div>';document.getElementById('kitchenAll').innerHTML=sorted.map(invHTML).join('')||'<div class="mealrow muted">Your Kitchen is empty.</div>'}
+function renderIdeas(){let soon=state.inventory.filter(x=>daysUntil(x.date)<=3);let hasChicken=state.inventory.some(x=>/chicken/i.test(x.name));let ideas=[];if(soon.some(x=>/strawber/i.test(x.name)))ideas.push({name:'Strawberry & Greek Yoghurt Bowl',kcal:285,p:'24g',note:'Uses strawberries before they expire',emoji:'🍓'});if(hasChicken)ideas.push({name:'Honey Chilli Chicken',kcal:518,p:'42g',note:'Uses chicken from your Kitchen',emoji:'🍗'});ideas.push({name:'Chicken & Potato Curry',kcal:610,p:'38g',note:'Uses ingredients already in Kitchen',emoji:'🍛'});document.getElementById('ideasList').innerHTML=ideas.map(x=>`<div class="mealrow"><div class="row"><div><b>${x.emoji} ${x.name}</b><div class="mealmeta">${x.kcal} kcal · ${x.p} protein</div><div class="sub">♻️ ${x.note}</div></div><button class="btn small" onclick="toast('Recipe selected')">Make</button></div></div>`).join('')}
+async function lookupBarcode(code){code=code.replace(/\D/g,'');if(!code)return toast('Enter a barcode');document.getElementById('scanMsg').textContent='Looking up product…';try{let r=await fetch(`https://world.openfoodfacts.org/api/v3/product/${encodeURIComponent(code)}.json?cc=gb&lc=en&fields=code,product_name,brands,image_front_url,nutriments,product_quantity,serving_size`);let d=await r.json();if(d.status!==1||!d.product?.product_name){document.getElementById('scanMsg').textContent='Product not found — you can create it manually.';return}let p=d.product,n=p.nutriments||{},f={name:p.product_name,kcal:+(n['energy-kcal_100g']||0),protein:+(n.proteins_100g||0),carbs:+(n.carbohydrates_100g||0),fat:+(n.fat_100g||0),unit:'100g',barcode:code,brand:p.brands||''};state.foods.unshift(f);save();closeModals();toast(`${f.name} found ✓`);render();show('food')}catch(e){document.getElementById('scanMsg').textContent='Could not reach the product database. Try again or enter the barcode manually.'}}
+let stream=null,scanTimer=null;
+async function openScanner(){openModal('scannerModal');let video=document.getElementById('video');if('BarcodeDetector' in window){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}}});video.srcObject=stream;video.style.display='block';let detector=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e']});scanTimer=setInterval(async()=>{try{let codes=await detector.detect(video);if(codes.length){document.getElementById('manualBarcode').value=codes[0].rawValue;lookupBarcode(codes[0].rawValue)}}catch(e){}},700)}catch(e){document.getElementById('scanMsg').textContent='Camera unavailable. Enter the barcode below.'}}else document.getElementById('scanMsg').textContent='Your browser does not support automatic barcode scanning. Enter the barcode below.'}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}clearInterval(scanTimer);scanTimer=null}
+render();
+</script>
+</body></html>
