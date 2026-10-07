@@ -29,7 +29,10 @@ function init(){
    save(g);closeSettings();sync();const t=$('toast');if(t){t.textContent='Goals updated ✓';t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
   }
  },true);
- new MutationObserver(()=>sync()).observe(document.querySelector('.app'),{subtree:true,childList:true});
+ const root=document.querySelector('.app');
+ let busy=false;
+ const observer=new MutationObserver(()=>{if(busy)return;busy=true;observer.disconnect();sync();observer.observe(root,{subtree:true,childList:true});busy=false});
+ observer.observe(root,{subtree:true,childList:true});
  sync();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
