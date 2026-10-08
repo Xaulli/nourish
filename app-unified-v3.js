@@ -64,6 +64,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-nav],[data
 });
 $('foodSearch')?.addEventListener('input',render);$('mport')?.addEventListener('input',updateMealTotals);
 document.querySelector('.profile-btn[data-settings]')?.addEventListener('click',e=>{e.preventDefault();showSettings()});
+$('settingsModal')?.addEventListener('click',e=>{if(e.target.id==='settingsModal')close('settingsModal')});$('settingsModal')?.querySelector('[data-close-settings]')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();close('settingsModal')});$('settingsModal')?.querySelector('[data-save-settings]')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();saveGoalForm()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));}});
 document.addEventListener('click',e=>{if(openSwipe&&!e.target.closest('.swipe-row'))closeSwipe(openSwipe)});
 syncKitchenFoods();render();
