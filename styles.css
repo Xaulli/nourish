@@ -20,7 +20,7 @@ select{appearance:auto}
 /* Keep the calorie text visible: apply the hollow mask to the arc pseudo-element only */
 .dashboard-hero #ring.ring{-webkit-mask:none;mask:none;background:none}
 .dashboard-hero #ring.ring:before{display:none}
-.dashboard-hero #ring.ring:after{display:block;content:"";position:absolute;inset:0;border:0;border-radius:50%;background:conic-gradient(from -90deg,#faffec 0%,#c9ed70 var(--prog,0%),#83b50b var(--prog,0%),rgba(255,255,255,.24) var(--prog,0%) 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));z-index:0}
+.dashboard-hero #ring.ring:after{display:block;content:"";position:absolute;inset:0;border:0;border-radius:50%;background:conic-gradient(from -90deg,#e8ffb5 0%,var(--ring-end,#83b50b) var(--prog,0%),rgba(255,255,255,.24) var(--prog,0%) 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));z-index:0;transition:background .35s ease}
 .dashboard-hero #ring.ring .rin{position:relative;z-index:2}
 
 .meal-image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:8px 0 16px}
