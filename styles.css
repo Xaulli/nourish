@@ -127,3 +127,21 @@ select{appearance:auto}
 .restaurant-categories::-webkit-scrollbar{display:none}
 .restaurant-category{border:1px solid var(--line);border-radius:999px;padding:8px 12px;white-space:nowrap;background:var(--card);color:var(--muted);font-size:12px;font-weight:750}
 .restaurant-category.active{background:var(--g);border-color:var(--g);color:#fff}
+
+/* Nourish dark mode */
+:root[data-theme="dark"]{--bg:#111813;--card:#1c261f;--ink:#edf4e9;--muted:#a4b2a6;--line:#344137;--shadow:0 18px 50px rgba(0,0,0,.28)}
+:root[data-theme="dark"] html,:root[data-theme="dark"] body{background:#111813;color:var(--ink)}
+:root[data-theme="dark"] body{background:radial-gradient(circle at 15% 5%,#23351d 0,transparent 32%),radial-gradient(circle at 90% 30%,#28243a 0,transparent 30%),var(--bg)}
+:root[data-theme="dark"] .card,:root[data-theme="dark"] .sheet,:root[data-theme="dark"] .swipe-content,:root[data-theme="dark"] .idea-card{background:var(--card);border-color:var(--line);color:var(--ink)}
+:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] .btn.alt,:root[data-theme="dark"] .profile-btn,:root[data-theme="dark"] .quick{background:#263329;color:var(--ink);border-color:#465846}
+:root[data-theme="dark"] nav{background:rgba(28,38,31,.96);border-color:#344137}
+:root[data-theme="dark"] nav button.active{background:#334522;color:#d5f59a}
+:root[data-theme="dark"] .close{background:#303b32;color:#dce7da}
+:root[data-theme="dark"] .bar,:root[data-theme="dark"] .water{background:#344137}
+:root[data-theme="dark"] .nut{background:#29372d}
+:root[data-theme="dark"] .alert{background:linear-gradient(135deg,#392825,#302b20);border-color:#60433b}
+:root[data-theme="dark"] .theme-setting{border-color:var(--line)}
+.theme-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;margin:4px 0 14px;border-bottom:1px solid var(--line)}
+.package-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.package-summary{margin-top:3px;color:var(--g);font-weight:750}
+:root[data-theme="dark"] .package-summary{color:#c7ed72}
