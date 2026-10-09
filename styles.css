@@ -118,3 +118,12 @@ select{appearance:auto}
 .section-lunch .section-count{background:#eaf7e7;color:#347746}
 .section-dinner .section-count{background:#f0edff;color:#6753a6}
 .section-snacks .section-count{background:#fff0f4;color:#b64f70}
+
+/* Calorie ring shifts from leafy green through coral as the daily goal is exceeded */
+.dashboard-hero .ring{background:conic-gradient(from -90deg,#e8ffb5 0%,var(--ring-end,#fff) var(--prog,0%),rgba(255,255,255,.24) var(--prog,0%) 100%);transition:background .35s ease}
+.dashboard-hero .ring:before{background:linear-gradient(145deg,#5c8700,#82ac08);transition:background .35s ease}
+.dashboard-hero .ring[style*="--ring-over: 1"]{box-shadow:0 8px 25px rgba(245,83,78,.18)}
+.restaurant-categories{display:flex;gap:7px;overflow-x:auto;padding:4px 1px 10px;margin:0 0 4px;scrollbar-width:none}
+.restaurant-categories::-webkit-scrollbar{display:none}
+.restaurant-category{border:1px solid var(--line);border-radius:999px;padding:8px 12px;white-space:nowrap;background:var(--card);color:var(--muted);font-size:12px;font-weight:750}
+.restaurant-category.active{background:var(--g);border-color:var(--g);color:#fff}
