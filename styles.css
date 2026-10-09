@@ -64,3 +64,13 @@ select{appearance:auto}
 #kitchenSoon .swipe-content .sub{color:#a04e45}
 #useSoon .swipe-content .soon,
 #kitchenSoon .swipe-content .soon{color:#a93d2f}
+
+/* Give coloured use-soon cards breathing room from one another */
+#useSoon .swipe-row,
+#kitchenSoon .swipe-row{margin-block:10px!important}
+#useSoon .swipe-content,
+#kitchenSoon .swipe-content{border-radius:18px;padding:13px 14px;min-height:68px}
+#useSoon .swipe-row:first-child,
+#kitchenSoon .swipe-row:first-child{margin-top:8px!important}
+#useSoon .swipe-row:last-child,
+#kitchenSoon .swipe-row:last-child{margin-bottom:8px!important}
