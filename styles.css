@@ -98,3 +98,23 @@ select{appearance:auto}
 .category-picker-options button>b{flex:1;font-size:15px}
 .category-picker-options button>i{font-style:normal;color:var(--muted);font-size:24px}
 .category-picker-options button.selected{border-color:var(--g);background:rgba(130,174,22,.08)}
+
+/* Distinct, friendly meal-period headers */
+.meal-section{padding:16px 0 12px}
+.meal-section-heading{margin-bottom:11px}
+.meal-section-heading>div{align-items:center;gap:8px}
+.meal-section-heading b{font-size:17px;font-weight:850;letter-spacing:-.35px}
+.meal-section-heading .section-emoji{width:34px;height:34px;display:grid;place-items:center;border-radius:12px;font-size:19px;flex:0 0 34px}
+.meal-section-heading .section-count{padding:4px 8px;border-radius:999px;background:#f0f2eb;color:#778174;font-size:10px;font-weight:800;white-space:nowrap}
+.section-breakfast .section-emoji{background:linear-gradient(135deg,#fff0c8,#ffe3a0)}
+.section-lunch .section-emoji{background:linear-gradient(135deg,#dff5d8,#c6e9bd)}
+.section-dinner .section-emoji{background:linear-gradient(135deg,#e7e1ff,#d7cdfd)}
+.section-snacks .section-emoji{background:linear-gradient(135deg,#ffe0e8,#ffc9d7)}
+.section-breakfast .meal-section-heading b{color:#98621a}
+.section-lunch .meal-section-heading b{color:#347746}
+.section-dinner .meal-section-heading b{color:#6753a6}
+.section-snacks .meal-section-heading b{color:#b64f70}
+.section-breakfast .section-count{background:#fff5df;color:#98621a}
+.section-lunch .section-count{background:#eaf7e7;color:#347746}
+.section-dinner .section-count{background:#f0edff;color:#6753a6}
+.section-snacks .section-count{background:#fff0f4;color:#b64f70}
