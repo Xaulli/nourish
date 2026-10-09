@@ -1,0 +1,19 @@
+{
+  "name": "Nourish — Eat well. Waste less.",
+  "short_name": "Nourish",
+  "description": "Track your food, nourish yourself, and waste less.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7ef",
+  "theme_color": "#6d9d00",
+  "icons": [
+    {
+      "src": "nourish-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
