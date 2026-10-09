@@ -145,3 +145,6 @@ select{appearance:auto}
 .package-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .package-summary{margin-top:3px;color:var(--g);font-weight:750}
 :root[data-theme="dark"] .package-summary{color:#c7ed72}
+
+/* Food page: quick add and stock-use actions */
+.food-actions{display:flex;align-items:center;gap:7px;flex:0 0 auto}.food-actions .btn{white-space:nowrap}.food-info{min-width:0}.stock-available{color:var(--g);font-weight:750;margin-top:3px}:root[data-theme="dark"] .stock-available{color:#c7ed72}
