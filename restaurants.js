@@ -45,7 +45,7 @@ const restaurants=[
 {name:'Americano (medium)',kcal:6,category:'Drinks'},
 {name:'Orange Juice',kcal:100,category:'Drinks'},
 {name:'Coca-Cola Original Taste (medium)',kcal:170,category:'Drinks'}
-]}
+]},
 {id:'kfc',name:'KFC',emoji:'🍗',items:[{name:'Zinger Burger',kcal:445},{name:'Original Recipe Burger',kcal:450},{name:'Fillet Burger',kcal:380},{name:'3 Piece Original Recipe Chicken',kcal:660},{name:'Regular Signature Fries',kcal:265},{name:'Regular Popcorn Chicken',kcal:285},{name:'Mini Fillet',kcal:130},{name:'Chocolate Chip Cookie',kcal:220}]},
 {id:'nandos',name:"Nando's",emoji:'🍗',items:[{name:'The Big Caesar',kcal:649},{name:'Sol Bowl',kcal:583},{name:'Hearty Bowl',kcal:432},{name:'4 Boneless Chicken Thighs',kcal:706},{name:'Chicken Butterfly',kcal:332},{name:'1/2 Chicken',kcal:579},{name:'1/4 Chicken',kcal:289},{name:'5 Chicken Wings',kcal:393},{name:'Grilled Chicken Burger',kcal:443},{name:'Grilled Chicken Wrap',kcal:514},{name:'Grilled Chicken Pitta',kcal:508},{name:'Chips',kcal:248}]},
 {id:'subway',name:'Subway',emoji:'🥪',items:[{name:'6-inch Italian B.M.T.',kcal:414},{name:'6-inch Meatball Marinara',kcal:410},{name:'6-inch Chicken Teriyaki',kcal:371},{name:'6-inch Steak & Cheese',kcal:445},{name:'6-inch Turkey Breast',kcal:292},{name:'6-inch Tuna',kcal:426},{name:'6-inch Veggie Delite',kcal:224},{name:'Chocolate Chip Cookie',kcal:210}]},
