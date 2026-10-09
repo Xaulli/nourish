@@ -74,3 +74,8 @@ select{appearance:auto}
 #kitchenSoon .swipe-row:first-child{margin-top:8px!important}
 #useSoon .swipe-row:last-child,
 #kitchenSoon .swipe-row:last-child{margin-bottom:8px!important}
+
+/* Water corrections: keep add actions primary and subtraction quieter */
+.water-actions{margin-top:10px;row-gap:8px}
+.water-actions .btn{min-height:44px}
+.water-actions .btn.alt{background:#fffdf8;color:#6d870e;border-color:#dce7c6}
