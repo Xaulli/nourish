@@ -1,0 +1,11 @@
+{
+  "name": "Hola — Spanish Practice",
+  "short_name": "Hola",
+  "description": "A friendly beginner Spanish learning companion.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f6ef",
+  "theme_color": "#174b3a",
+  "icons": []
+}
