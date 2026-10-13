@@ -53,33 +53,60 @@
 @media(max-width:390px){.story-row{grid-auto-columns:63%}.dashboard{padding:23px 19px 28px}.dash-stats div{padding:9px 5px}.dash-stats b{font-size:15px}}
 
 
-/* Hola refresh: clean uniform cards, soft gradients and floating navigation */
-:root{--sun:#f4c34e;--sea:#2b6974;--coral:#f07878;--lavender:#b7a5ef;--paper:#fffdf7}
-.dashboard{clip-path:none!important;border-radius:30px!important;background:linear-gradient(145deg,#214f58 0%,#2e6570 58%,#367986 100%)!important;box-shadow:0 16px 34px #214f581c!important;padding:24px 22px 26px!important;margin:2px 0 26px!important}
-.dashboard:after{content:"✦";right:18px;top:78px;font-size:60px;color:#ffffff24}
-.story-row{grid-auto-columns:68%!important;gap:14px!important;margin-right:-18px!important;padding:0 18px 14px 2px!important;scrollbar-width:none}
+/* Hola design system v10: one consistent rounded-rectangle language */
+:root{
+  --radius-card:24px;
+  --radius-panel:28px;
+  --radius-control:14px;
+  --paper:#fffdf7;
+}
+:where(.hero,.dashboard,.study-card,.quick-tile,.tile,.flashcard,.quizcard,.phrase,.tip,.settings,.stat,.story-card,.lesson-card,.path-card,.option,.empty,.sectionhead,.panel,.card,.modal,.sheet,.content-card){
+  border-radius:var(--radius-card)!important;
+}
+:where(.hero,.dashboard,.study-card){border-radius:var(--radius-panel)!important}
+:where(.btn,input,select,textarea,.iconbtn){border-radius:var(--radius-control)!important}
+:where(.story-card,.story-card:nth-child(1),.story-card:nth-child(2),.story-card:nth-child(3)){
+  border-radius:24px!important;
+  clip-path:none!important;
+  overflow:hidden!important;
+  transform:none;
+}
+.story-card:active,.story-card:nth-child(1):active,.story-card:nth-child(2):active,.story-card:nth-child(3):active{transform:scale(.985)}
+.story-row{grid-auto-columns:72%!important;gap:14px!important;padding:0 2px 12px!important;scrollbar-width:none}
 .story-row::-webkit-scrollbar{display:none}
-.story-card,.story-card:nth-child(2),.story-card:nth-child(3){border-radius:24px!important;aspect-ratio:.78!important;min-height:0!important;overflow:hidden!important;box-shadow:0 12px 26px #173b5212!important;border:1px solid #173b5208!important}
-.story-coral{--story-paper:#f8d8d2;background:linear-gradient(155deg,#f6b9b5 0%,#f9d9d3 62%,#fff0e9 100%)!important}
-.story-gold{--story-paper:#f9e8b0;background:linear-gradient(150deg,#f5d778 0%,#f9e8b0 62%,#fff5d6 100%)!important}
-.story-lilac{--story-paper:#e2d9fb;background:linear-gradient(150deg,#b9a8f0 0%,#e2d9fb 68%,#f4efff 100%)!important}
-.story-visual{inset:0 0 35% 0!important;clip-path:polygon(0 0,100% 0,100% 88%,0 100%)!important}
-.story-card strong{bottom:12%!important;line-height:1.15!important}
-.story-card small{bottom:3.2%!important}
-nav{position:fixed!important;left:14px!important;right:14px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;width:auto!important;max-width:680px!important;margin:0 auto!important;z-index:20!important;display:flex!important;gap:5px!important;justify-content:space-around!important;overflow:hidden!important;padding:8px 9px!important;border:1px solid #ffffffb8!important;border-radius:26px!important;background:linear-gradient(135deg,#fffefaee,#f5f9f9ed)!important;backdrop-filter:blur(20px) saturate(1.35)!important;-webkit-backdrop-filter:blur(20px) saturate(1.35)!important;box-shadow:0 10px 35px #173b5220,0 2px 8px #173b520c!important}
-nav button{border-radius:19px!important;min-width:0!important;width:20%!important;padding:7px 3px!important;flex:1 1 20%!important;transition:background .2s,transform .2s!important}
+.story-visual{inset:0 0 34% 0!important;clip-path:none!important;border-radius:0!important;overflow:hidden!important}
+.story-visual:after{display:none!important}
+.story-visual svg{width:100%;height:100%;display:block;filter:saturate(1.06) contrast(1.02)}
+.story-coral{background:linear-gradient(155deg,#f5d7c9,#fff0e8)!important}
+.story-gold{background:linear-gradient(155deg,#f4df9f,#fff4d5)!important}
+.story-lilac{background:linear-gradient(155deg,#d1c4f3,#f2edff)!important}
+.story-card strong,.story-card small,.story-tag{position:relative;z-index:1}
+.study-card{background:linear-gradient(135deg,#a99bea 0%,#c7bafa 65%,#d9d0ff 100%)!important}
+.dashboard{clip-path:none!important;background:linear-gradient(145deg,#214f58 0%,#2e6570 58%,#367986 100%)!important}
+nav{
+  position:fixed!important;left:14px!important;right:14px!important;
+  bottom:calc(10px + env(safe-area-inset-bottom))!important;
+  width:auto!important;max-width:680px!important;margin:0 auto!important;
+  z-index:20!important;display:flex!important;gap:5px!important;
+  justify-content:space-around!important;overflow:hidden!important;
+  padding:8px 9px!important;border:1px solid #ffffffb8!important;
+  border-radius:28px!important;background:linear-gradient(135deg,#fffefaee,#f5f9f9ed)!important;
+  backdrop-filter:blur(20px) saturate(1.35)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.35)!important;
+  box-shadow:0 10px 35px #173b5220,0 2px 8px #173b520c!important
+}
+nav button{border-radius:20px!important;min-width:0!important;width:20%!important;padding:7px 3px!important;flex:1 1 20%!important}
 nav button.active{background:linear-gradient(145deg,#d8f2f8,#c6eaf3)!important;color:#145f7b!important}
 .app{padding-bottom:calc(116px + env(safe-area-inset-bottom))!important}
 @media(min-width:620px){.story-row{grid-auto-columns:38%!important}}
-@media(max-width:390px){.story-row{grid-auto-columns:72%!important}.dashboard{padding:22px 18px 25px!important}.dash-stats{gap:6px}.dash-stats div{padding:9px 4px}.story-card strong{font-size:17px!important}}
-/* Final art direction: uniform rounded tiles + contemporary editorial illustrations */
-.story-row{gap:14px!important;}
-.story-card,.story-card:nth-child(1),.story-card:nth-child(2),.story-card:nth-child(3){border-radius:22px!important;clip-path:none!important;-webkit-clip-path:none!important;overflow:hidden!important;}
-.story-card:before,.story-card:after{clip-path:none!important;border-radius:inherit!important;}
-.story-visual{position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:35%!important;inset:0 0 35% 0!important;display:block!important;clip-path:none!important;border-radius:0!important;overflow:hidden!important;}
-.story-visual svg{display:block!important;width:100%!important;height:100%!important;overflow:hidden!important;}
-.story-card strong{position:absolute!important;left:17px!important;right:17px!important;bottom:12%!important;line-height:1.15!important;}
-.story-card small{position:absolute!important;left:17px!important;right:17px!important;bottom:4%!important;line-height:1.25!important;}
+@media(max-width:390px){
+ .story-row{grid-auto-columns:76%!important}
+ .dashboard{padding:22px 18px 25px!important}
+ .dash-stats{gap:6px}
+ .dash-stats div{padding:9px 4px}
+ .story-card strong{font-size:17px!important}
+}
+/* end Hola design system v10 */
 </style>
 </head>
 <body>
