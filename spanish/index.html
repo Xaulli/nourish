@@ -107,6 +107,90 @@ nav button.active{background:linear-gradient(145deg,#d8f2f8,#c6eaf3)!important;c
  .story-card strong{font-size:17px!important}
 }
 .story-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:0!important}
+
+/* Hola vibrant refresh v13: richer colour, lively gradients, luminous floating nav */
+:root{
+ --coral:#ff667d;
+ --green2:#087f9b;
+ --lilac:#a68aff;
+ --blue:#c9f1ff;
+ --peach:#ffd0b5;
+ --shadow:0 14px 34px #174d6418;
+}
+body{
+ background:
+   radial-gradient(ellipse at 8% 8%,#ffe4bd99 0,transparent 28rem),
+   radial-gradient(ellipse at 94% 32%,#dcd0ff66 0,transparent 25rem),
+   linear-gradient(180deg,#fffaf1 0%,#fffdf9 46%,#f5fbff 100%)!important;
+}
+.brand span{color:#ff6581!important}
+.top .eyebrow{color:#6e7d9a!important}
+.iconbtn{background:linear-gradient(145deg,#ffffff,#fff0f4)!important;border-color:#ffd6df!important;box-shadow:0 5px 16px #ed66841c!important}
+.hero{
+ background:linear-gradient(125deg,#ffcf58 0%,#ff9c76 47%,#ff7898 100%)!important;
+ box-shadow:0 15px 34px #f17c6833!important;
+}
+.hero:after{color:#ffffff55!important}
+.hero .eyebrow{color:#754e4d!important}
+.dashboard{
+ background:linear-gradient(128deg,#075f78 0%,#168da0 48%,#655bd7 100%)!important;
+ box-shadow:0 18px 38px #176b923b!important;
+}
+.dashboard .eyebrow{color:#d7f8ff!important}
+.dashboard h1 span{color:#ffdc76!important}
+.dashboard p{color:#f0fcff!important}
+.btn.coral,.btn.coral:focus{
+ background:linear-gradient(115deg,#ff6d7d 0%,#ff8c70 48%,#ffb45d 100%)!important;
+ color:#fff!important;border:0!important;
+ box-shadow:0 8px 20px #ff6d7d50!important;
+}
+.btn{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.btn:active{transform:translateY(1px) scale(.985);filter:saturate(1.15)}
+.sectionhead h2{color:#173b52}
+.story-card{
+ box-shadow:0 14px 30px #173b5218!important;
+ border:1px solid #ffffffa8!important;
+}
+.story-coral{background:linear-gradient(145deg,#ffb4a2 0%,#ffd1c3 50%,#fff0df 100%)!important}
+.story-gold{background:linear-gradient(145deg,#ffd85e 0%,#ffe9a5 54%,#fff8d9 100%)!important}
+.story-lilac{background:linear-gradient(145deg,#9f8aff 0%,#c1adff 48%,#eee7ff 100%)!important}
+.story-tag{color:#58647b!important}
+.study-card{
+ background:linear-gradient(125deg,#9278f0 0%,#b09aff 46%,#e1b8ff 100%)!important;
+ box-shadow:0 14px 32px #9278f03b!important;
+}
+.study-card .eyebrow{color:#f5f0ff!important}
+.study-card h3,.study-card p{color:#27265d!important}
+:where(.tip,.today-tip,.tip-card,.quick-tile,.study-tile,.lesson-card,.path-card,.stat,.tile,.panel,.content-card){
+ box-shadow:0 10px 26px #173b520c;
+}
+:where(.tip,.today-tip,.tip-card){background:linear-gradient(135deg,#c7f2ff 0%,#ddf6ff 52%,#f0eaff 100%)!important}
+:where(.quick-tile,.study-tile,.lesson-card,.path-card,.tile){
+ background:linear-gradient(145deg,#ffffff 0%,#fff9f3 58%,#f4f3ff 100%);
+ border:1px solid #e9e4f5;
+}
+:where(.btn:not(.coral)){box-shadow:0 5px 14px #173b520e}
+nav{
+ background:linear-gradient(115deg,#fff4d9 0%,#ffe0ed 30%,#e6dcff 63%,#d3f6ff 100%)!important;
+ border:1px solid #ffffffed!important;
+ box-shadow:0 12px 36px #5c55b83b,0 3px 12px #f278a02b!important;
+}
+nav:before{
+ content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(110deg,#ffffff55,transparent 35%,#ffffff33 68%,transparent);
+}
+nav button{position:relative;z-index:1;color:#536b7c!important}
+nav button.active{
+ background:linear-gradient(135deg,#087f9b 0%,#4f86ed 48%,#9c71ed 100%)!important;
+ color:#fff!important;
+ box-shadow:0 5px 15px #4f86ed45!important;
+}
+nav button.active svg,nav button.active span{color:#fff!important}
+@media(prefers-reduced-motion:no-preference){
+ .story-card,.study-card,.hero,.dashboard{transition:box-shadow .22s ease,filter .22s ease}
+ .story-card:active{filter:saturate(1.12)}
+}
+
 /* end Hola design system v10 */
 </style>
 </head>
