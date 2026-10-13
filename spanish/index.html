@@ -52,112 +52,26 @@
 @media(min-width:620px){.story-row{grid-auto-columns:34%}}
 @media(max-width:390px){.story-row{grid-auto-columns:63%}.dashboard{padding:23px 19px 28px}.dash-stats div{padding:9px 5px}.dash-stats b{font-size:15px}}
 
-/* Hola organic-card art direction v2 */
-.dashboard{
-  clip-path:url(#holaHeroShape);
-  border-radius:0;
-  padding:25px 22px 30px;
-  margin:2px 0 27px;
-  background:var(--teal);
-  box-shadow:none;
-  isolation:isolate;
-}
-.dashboard:after{right:18px;top:82px;font-size:58px;color:#ffffff26;z-index:0;pointer-events:none}
-.dashboard > *{position:relative;z-index:1}
-.dash-stats{gap:8px;margin-bottom:25px}
-.dash-stats div{border-radius:24px;padding:11px 7px;border-color:#ffffff36}
-.story-row{
-  grid-auto-columns:56%;
-  gap:14px;
-  margin-right:-18px;
-  padding:0 18px 14px 2px;
-  scroll-padding-left:2px;
-  scrollbar-width:none;
-}
-.story-row::-webkit-scrollbar{display:none}
-.story-card{
-  aspect-ratio:.72;
-  min-height:0;
-  height:auto;
-  padding:0;
-  border:0;
-  border-radius:38px 16px 36px 18px / 30px 18px 30px 20px;
-  background:var(--story-paper);
-  box-shadow:0 12px 24px #173b520d;
-  display:block;
-  isolation:isolate;
-}
-.story-coral{--story-paper:#f8d5d0;background:#f8d5d0}
-.story-gold{--story-paper:#f8e8b6;background:#f8e8b6}
-.story-lilac{--story-paper:#dfd6f8;background:#dfd6f8}
-.story-card:nth-child(2){border-radius:38px 18px 34px 18px / 30px 18px 28px 20px}
-.story-card:nth-child(3){border-radius:36px 18px 38px 16px / 28px 18px 32px 20px}
-.story-visual{
-  position:absolute;
-  inset:0 0 35% 0;
-  z-index:0;
-  overflow:hidden;
-  background:transparent;
-  clip-path:polygon(0 0,100% 0,100% 83%,0 100%);
-}
-.story-visual:after{content:none}
-.story-visual svg{display:block;width:100%;height:100%;filter:none}
-.story-tag{
-  position:absolute;
-  left:0;right:0;bottom:28%;
-  margin:0 16px 7px;
-  font-size:9px;
-  letter-spacing:1.35px;
-  font-weight:850;
-  color:#28545c;
-  opacity:.82;
-  z-index:1;
-}
-.story-card strong{
-  position:absolute;
-  left:0;right:0;bottom:12%;
-  margin:0 16px;
-  max-width:calc(100% - 32px);
-  font-size:clamp(16px,4.2vw,20px);
-  line-height:1.12;
-  letter-spacing:-.45px;
-  font-weight:850;
-  z-index:1;
-}
-.story-card small{
-  position:absolute;
-  left:0;right:0;bottom:3%;
-  margin:0 16px;
-  max-width:calc(100% - 32px);
-  font-size:11px;
-  line-height:1.3;
-  color:#526b75;
-  opacity:1;
-  z-index:1;
-}
-.story-play{
-  position:absolute;right:13px;top:13px;z-index:2;
-  width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;
-  background:#fffaf0e8;color:#28545c;
-  box-shadow:0 4px 12px #173b5218;
-}
-.study-card{
-  border-radius:38px 16px 34px 18px;
-  min-height:146px;
-}
-.quick-tile{border-radius:26px 14px 24px 14px}
-@media(max-width:390px){
-  .dashboard{padding:23px 19px 29px}
-  .dash-stats{gap:6px}
-  .dash-stats div{padding:9px 5px;border-radius:21px}
-  .story-row{grid-auto-columns:58%}
-  .story-card strong{font-size:16px;margin-left:13px;margin-right:13px;max-width:calc(100% - 26px)}
-  .story-card small{font-size:10px;margin-left:13px;margin-right:13px;max-width:calc(100% - 26px)}
-  .story-tag{margin-left:13px;margin-right:13px}
-}
-@media(min-width:620px){.story-row{grid-auto-columns:34%}}
 
+/* Hola refresh: clean uniform cards, soft gradients and floating navigation */
+:root{--sun:#f4c34e;--sea:#2b6974;--coral:#f07878;--lavender:#b7a5ef;--paper:#fffdf7}
+.dashboard{clip-path:none!important;border-radius:30px!important;background:linear-gradient(145deg,#214f58 0%,#2e6570 58%,#367986 100%)!important;box-shadow:0 16px 34px #214f581c!important;padding:24px 22px 26px!important;margin:2px 0 26px!important}
+.dashboard:after{content:"✦";right:18px;top:78px;font-size:60px;color:#ffffff24}
+.story-row{grid-auto-columns:68%!important;gap:14px!important;margin-right:-18px!important;padding:0 18px 14px 2px!important;scrollbar-width:none}
+.story-row::-webkit-scrollbar{display:none}
+.story-card,.story-card:nth-child(2),.story-card:nth-child(3){border-radius:24px!important;aspect-ratio:.78!important;min-height:0!important;overflow:hidden!important;box-shadow:0 12px 26px #173b5212!important;border:1px solid #173b5208!important}
+.story-coral{--story-paper:#f8d8d2;background:linear-gradient(155deg,#f6b9b5 0%,#f9d9d3 62%,#fff0e9 100%)!important}
+.story-gold{--story-paper:#f9e8b0;background:linear-gradient(150deg,#f5d778 0%,#f9e8b0 62%,#fff5d6 100%)!important}
+.story-lilac{--story-paper:#e2d9fb;background:linear-gradient(150deg,#b9a8f0 0%,#e2d9fb 68%,#f4efff 100%)!important}
+.story-visual{inset:0 0 35% 0!important;clip-path:polygon(0 0,100% 0,100% 88%,0 100%)!important}
+.story-card strong{bottom:12%!important;line-height:1.15!important}
+.story-card small{bottom:3.2%!important}
+nav{position:fixed!important;left:14px!important;right:14px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;width:auto!important;max-width:680px!important;margin:0 auto!important;z-index:20!important;display:flex!important;gap:5px!important;justify-content:space-around!important;overflow:hidden!important;padding:8px 9px!important;border:1px solid #ffffffb8!important;border-radius:26px!important;background:linear-gradient(135deg,#fffefaee,#f5f9f9ed)!important;backdrop-filter:blur(20px) saturate(1.35)!important;-webkit-backdrop-filter:blur(20px) saturate(1.35)!important;box-shadow:0 10px 35px #173b5220,0 2px 8px #173b520c!important}
+nav button{border-radius:19px!important;min-width:0!important;width:20%!important;padding:7px 3px!important;flex:1 1 20%!important;transition:background .2s,transform .2s!important}
+nav button.active{background:linear-gradient(145deg,#d8f2f8,#c6eaf3)!important;color:#145f7b!important}
+.app{padding-bottom:calc(116px + env(safe-area-inset-bottom))!important}
+@media(min-width:620px){.story-row{grid-auto-columns:38%!important}}
+@media(max-width:390px){.story-row{grid-auto-columns:72%!important}.dashboard{padding:22px 18px 25px!important}.dash-stats{gap:6px}.dash-stats div{padding:9px 4px}.story-card strong{font-size:17px!important}}
 </style>
 </head>
 <body>
