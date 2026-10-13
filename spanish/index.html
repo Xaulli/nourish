@@ -192,6 +192,66 @@ nav button.active svg,nav button.active span{color:#fff!important}
 }
 
 /* end Hola design system v10 */
+
+/* Hola v14: extra-colourful gradients + small-screen overflow fixes */
+body{
+ background:
+  radial-gradient(ellipse at 0% 8%,#ffd16fbb 0,transparent 23rem),
+  radial-gradient(ellipse at 100% 23%,#ffb5d8a6 0,transparent 24rem),
+  radial-gradient(ellipse at 4% 76%,#a8edff75 0,transparent 22rem),
+  radial-gradient(ellipse at 96% 88%,#cbb5ff85 0,transparent 24rem),
+  linear-gradient(155deg,#fff5df 0%,#fff0f5 48%,#eefaff 100%)!important;
+}
+.dashboard{
+ background:linear-gradient(122deg,#064e9a 0%,#087fbb 28%,#6c50e8 65%,#ef5fba 100%)!important;
+ box-shadow:0 20px 46px #754be84d,0 5px 16px #0c9dd12e!important;
+}
+.dashboard:after{color:#ffffff38!important}
+.hero{background:linear-gradient(120deg,#ffe34f 0%,#ff9a62 38%,#ff5b91 72%,#a66cff 100%)!important}
+.btn.coral,.btn.coral:focus{
+ background:linear-gradient(105deg,#ff477e 0%,#ff6b6b 35%,#ff9e42 70%,#ffd64b 100%)!important;
+ box-shadow:0 10px 26px #ff6a774f, inset 0 1px 0 #ffffff66!important;
+}
+.story-coral{background:linear-gradient(135deg,#ff927e 0%,#ffb4bd 42%,#ffe5c8 100%)!important}
+.story-gold{background:linear-gradient(135deg,#ffbd39 0%,#ffdf70 48%,#fff1b8 100%)!important}
+.story-lilac{background:linear-gradient(135deg,#795cff 0%,#ad78ff 46%,#ffc0e9 100%)!important}
+.study-card{
+ background:linear-gradient(120deg,#7b3ff2 0%,#a44fff 34%,#e85bb8 68%,#ff9c8a 100%)!important;
+ box-shadow:0 18px 38px #a44ff044!important;
+}
+nav{
+ background:linear-gradient(112deg,#fff0a8 0%,#ffb8d9 24%,#d2baff 53%,#a4eaff 78%,#a8f4d3 100%)!important;
+ box-shadow:0 14px 42px #8b54dc52,0 4px 16px #ff6caa36!important;
+ border:1px solid #ffffffed!important;
+}
+nav button.active{
+ background:linear-gradient(135deg,#00a9bd 0%,#4778f5 44%,#974be8 76%,#ed5fb5 100%)!important;
+ box-shadow:0 6px 18px #6c56e955, inset 0 1px 0 #ffffff70!important;
+}
+.dash-stats{grid-template-columns:minmax(0,1fr) minmax(0,1.22fr) minmax(0,1fr)!important;gap:6px!important}
+.dash-stats div{
+ min-width:0!important;white-space:normal!important;overflow-wrap:anywhere;
+ padding:9px 4px!important;font-size:11px!important;line-height:1.25!important;
+ display:flex;align-items:center;justify-content:center;flex-wrap:wrap;column-gap:3px;row-gap:1px;
+}
+.dash-stats b{font-size:15px!important;flex:0 0 auto}
+.dash-stats span{font-size:10px!important;white-space:normal!important}
+#lessonDate{
+ display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
+ box-sizing:border-box!important;-webkit-appearance:none;appearance:none;
+ font-size:16px!important;padding:13px 10px!important;overflow:hidden!important;
+ text-align:center!important;border-radius:20px!important;
+}
+#lessons .settings{min-width:0!important;max-width:100%!important;overflow:hidden}
+#lessons .settings label,#lessons .settings .input{min-width:0!important;max-width:100%!important}
+@media(max-width:390px){
+ .dash-stats{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr)!important;gap:4px!important}
+ .dash-stats div{padding:8px 2px!important;font-size:10px!important}
+ .dash-stats span{font-size:9px!important}
+ .dash-stats b{font-size:14px!important}
+ #lessonDate{padding:12px 7px!important}
+}
+
 </style>
 </head>
 <body>
