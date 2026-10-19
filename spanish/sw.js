@@ -1,4 +1,4 @@
-const CACHE = "hola-spanish-v17";
+const CACHE = "hola-spanish-v18";
 const FILES = ["./", "./index.html", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", event => {
