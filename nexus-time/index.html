@@ -35,7 +35,7 @@
 const Z=[["Europe/London","🇬🇧 United Kingdom · London","UK"],["America/New_York","🇺🇸 Eastern Time · New York","ET"],["America/Los_Angeles","🇺🇸 Pacific Time · Los Angeles","PT"],["America/Chicago","🇺🇸 Central Time · Chicago","CT"],["America/Denver","🇺🇸 Mountain Time · Denver","MT"],["Europe/Berlin","🇪🇺 Central Europe · Berlin","CET/CEST"],["Asia/Tokyo","🇯🇵 Japan · Tokyo","JST"],["Asia/Seoul","🇰🇷 South Korea · Seoul","KST"],["Australia/Sydney","🇦🇺 Australia · Sydney","AET"],["UTC","🌐 Coordinated Universal Time","UTC"],["America/Phoenix","🇺🇸 Arizona · Phoenix","MST"],["Asia/Singapore","🇸🇬 Singapore","SGT"]];
 const $=id=>document.getElementById(id), zone=id=>Z.find(z=>z[0]===id)||Z[0], iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 function zoneLabel(z,dateStr){let d=dateStr?new Date(dateStr+"T12:00:00Z"):new Date();let a=new Intl.DateTimeFormat("en-US",{timeZone:z[0],timeZoneName:"short"}).formatToParts(d).find(p=>p.type==="timeZoneName")?.value||z[2];return z[1]+" · "+a+" · "+offTxt(d,z[0])}
-function fill(id,sel,dateStr){$(id).innerHTML=Z.map(z=>'<option value="'+z[0]+'" '+(z[0]===sel?'selected':'')+''>${zoneLabel(z,dateStr)}</option>').join("")}
+function fill(id,sel,dateStr){$(id).innerHTML=Z.map(z=>'<option value="'+z[0]+'" '+(z[0]===sel?'selected':'')+' >'+zoneLabel(z,dateStr)+'</option>').join("")}
 function refreshZoneSelect(id,dateStr){let current=$(id).value;fill(id,current,dateStr)}
 fill("homeZone","Europe/London");fill("eventZone","America/Los_Angeles");fill("fromZone","America/Los_Angeles");fill("toZone","Europe/London");fill("addZone","Asia/Seoul");
 $("eventDate").value=iso(new Date(Date.now()+86400000));$("fromDate").value=iso(new Date());
